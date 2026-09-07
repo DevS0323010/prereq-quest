@@ -19,14 +19,16 @@ Languages I have used:
 - [ ] Compile software from source
 - [ ] Use a debugger
 - [ ] Use Linux as a primary development environment
+- [ ] `sudo rm -rf /` a server ???!
+- [ ] <others ...>
 
 ## Something I built
 
-...
+<did u made a windows clone lol>
 
 ## Something I want to understand better
 
-...
+<maybe how to pwn school server ???>
 
 ## Mission 01 — Linux
 
