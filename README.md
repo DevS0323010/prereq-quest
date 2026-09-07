@@ -9,8 +9,8 @@ Rules:
 - Fork this repository.
 - Work on your fork.
 - Do not modify `.github/workflows/quest.yml`.
-- Do not modify test expectations (`app/test.janet`, mission logs/fixtures)
-  just to make them pass.
+- Do not modify test expectations (`app/test.janet`) or mission fixtures just
+  to make checks pass, unless a mission explicitly asks you to edit that file.
 - Use any tools or references you normally use while developing — Google,
   man pages, Stack Overflow, LLMs, a friend. That's all fair game.
 - Understand every change you commit.

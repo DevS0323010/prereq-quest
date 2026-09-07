@@ -1,4 +1,4 @@
-# Mission 05 — Debug an unfamiliar project
+# Mission 04 — Debug an unfamiliar project
 
 This is the important one.
 
@@ -42,13 +42,13 @@ or use the local checker:
 ./scripts/check.sh
 ```
 
-Don't have Janet installed? See the root `README.md` for install options,
-or build/run the project inside Docker (Mission 04) instead — the same
+Don't have Janet installed? Run `./scripts/doctor.sh` for install guidance,
+or build/run the project inside Docker (Mission 05) instead — the same
 source file is used there.
 
 ## Record your answer
 
-In your profile, under `## Mission 05 — Debug`:
+In your profile, under `## Mission 04 — Debug`:
 
 ```md
 What was wrong:

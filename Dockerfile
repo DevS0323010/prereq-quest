@@ -1,4 +1,4 @@
-# Mission 04 - Docker
+# Mission 05 - Docker
 #
 # Something in here is wrong. `docker build` will succeed, but
 # `docker run` will not behave. Read the error, inspect this file,
@@ -30,7 +30,6 @@ RUN curl -fsSL -o /tmp/janet-src.tar.gz \
 
 WORKDIR /quest
 
-# The build oracle placed the source file here...
 COPY app/main.janet /app/main.janet
 
 CMD ["janet", "main.janet"]

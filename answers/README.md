@@ -10,6 +10,11 @@ For example, if your GitHub username is `octocat`, create
 `answers/octocat.md`. A ready-to-copy version of this template also lives
 at `answers/TEMPLATE.md`.
 
+This file is committed to a public fork. Use only your GitHub username;
+do not include a student ID, Discord name, legal name, email address, or
+other private identifier. Your instructor should collect any roster
+mapping separately through a private channel.
+
 This file is where every mission's written answers live: your profile,
 plus one section per mission. Each mission's `README.md` tells you what
 goes in its section. CI reads this file, so keep the section headings

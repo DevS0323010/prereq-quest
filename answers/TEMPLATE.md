@@ -1,5 +1,8 @@
 # <github-username>
 
+<!-- Public fork: use only your GitHub username. Do not add a student ID,
+Discord name, legal name, email address, or other private identifier. -->
+
 ## Environment
 
 OS:
@@ -50,13 +53,13 @@ SSH token:
 
 Command I used:
 
-## Mission 04 — Docker
+## Mission 04 — Debug
 
 What was wrong:
 
 What I changed:
 
-## Mission 05 — Debug
+## Mission 05 — Docker
 
 What was wrong:
 

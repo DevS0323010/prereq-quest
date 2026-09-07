@@ -141,7 +141,7 @@ else
   fi
 fi
 
-# --- Mission 05: Janet tests --------------------------------------------
+# --- Mission 04: Janet tests --------------------------------------------
 if command -v janet >/dev/null 2>&1; then
   if janet app/test.janet >"$JANET_LOG" 2>&1; then
     ok "janet tests"
@@ -152,7 +152,7 @@ else
   skip "janet tests: janet is not installed (see scripts/doctor.sh, or rely on CI)"
 fi
 
-# --- Mission 04: Docker ---------------------------------------------------
+# --- Mission 05: Docker ---------------------------------------------------
 if command -v docker >/dev/null 2>&1 && docker info >/dev/null 2>&1; then
   IMAGE_TAG="prereq-quest-check:local"
   if docker build -q -t "$IMAGE_TAG" . >"$DOCKER_BUILD_LOG" 2>&1; then

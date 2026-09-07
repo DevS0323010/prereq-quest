@@ -12,7 +12,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Check out repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
         with:
           fetch-depth: 0
 
@@ -64,12 +64,8 @@ jobs:
           ssh_line="$(line_for 'ssh')"
           conflict_line="$(line_for 'git conflict resolution')"
           improve_line="$(line_for 'improve mission')"
-          commits="$(grep -F 'commits so far' check-output.txt | head -n1 | grep -o '[0-9]\+' | head -n1)"
 
           git_status="$(emoji_for "$conflict_line")"
-          if [[ "$conflict_line" == "[ok]"* ]] && [ -n "$commits" ] && [ "$commits" -lt 3 ]; then
-            git_status="⚠️ partial (only $commits commit(s) — commit as you go)"
-          fi
 
           {
             echo "# 🧙 Prerequisite Quest"

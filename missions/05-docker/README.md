@@ -1,4 +1,4 @@
-# Mission 04 — Docker
+# Mission 05 — Docker
 
 The `Dockerfile` at the repository root is broken. `docker build` will
 succeed — the image builds fine — but `docker run` will not behave.
@@ -18,15 +18,20 @@ hello, world
 ```
 
 It won't, at first. Read the error `docker run` gives you, then read the
-`Dockerfile`. The problem is small — a path mismatch, not a missing tool.
+`Dockerfile`.
 
-This mission depends on Mission 05 being fixed first: the container runs
-the same `app/main.janet` that mission 05 asks you to debug, so make sure
-that's correct before you spend time here.
+<details><summary>Hint</summary>
+
+Compare the paths used by `WORKDIR`, `COPY`, and `CMD`.
+
+</details>
+
+This mission runs the `app/main.janet` program fixed in Mission 04, so
+complete that mission first.
 
 ## Record your answer
 
-In your profile, under `## Mission 04 — Docker`:
+In your profile, under `## Mission 05 — Docker`:
 
 ```md
 What was wrong:

@@ -42,7 +42,7 @@ fi
 if command -v janet >/dev/null 2>&1; then
   report "janet" "OK" ""
 else
-  report "janet" "MISSING" "Optional locally: you can also run everything via Docker (Mission 04). To install: https://janet-lang.org/docs/index.html"
+  report "janet" "MISSING" "Optional locally: you can also run the program via Docker (Mission 05). To install: https://janet-lang.org/docs/index.html"
 fi
 
 if [ -n "${BASH_VERSION:-}" ]; then

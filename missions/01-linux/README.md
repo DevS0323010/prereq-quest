@@ -14,14 +14,22 @@ THE_PENGUIN_WAS_HERE
 Find it. There may be files nearby that look similar but are not quite
 right — read before you trust a match.
 
-Useful tools: `ls -a`, `find`, `grep`, `cat`, `less`.
+<details><summary>Hint: useful tools</summary>
+
+`ls -a`, `find`, `grep`, `cat`, `less`
+
+</details>
 
 ## Task B — count the errors
 
 `missions/01-linux/server.log` is a small server log. How many lines
 contain `ERROR`?
 
-Useful tools: `grep`, `wc`, pipes (`|`).
+<details><summary>Hint: useful tools</summary>
+
+`grep`, `wc`, pipes (`|`)
+
+</details>
 
 ## Record your answers
 
