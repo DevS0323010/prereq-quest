@@ -1,0 +1,56 @@
+#!/usr/bin/env bash
+# Prerequisite Quest - environment doctor.
+#
+# Non-destructive. Only reports what it finds; never installs anything.
+#
+# Usage:
+#   ./scripts/doctor.sh
+
+echo "Prerequisite Quest Doctor"
+echo
+
+report() {
+  local name="$1" status="$2" hint="$3"
+  printf '%-10s %s\n' "$name" "$status"
+  if [ -n "$hint" ] && [ "$status" != "OK" ]; then
+    printf '           %s\n' "$hint"
+  fi
+}
+
+if command -v git >/dev/null 2>&1; then
+  report "git" "OK" ""
+else
+  report "git" "MISSING" "Install Git: https://git-scm.com/downloads"
+fi
+
+if command -v ssh >/dev/null 2>&1; then
+  report "ssh" "OK" ""
+else
+  report "ssh" "MISSING" "An OpenSSH client ships with macOS and most Linux distros."
+fi
+
+if command -v docker >/dev/null 2>&1; then
+  if docker info >/dev/null 2>&1; then
+    report "docker" "OK" ""
+  else
+    report "docker" "INSTALLED (not running)" "Start Docker Desktop / the Docker daemon."
+  fi
+else
+  report "docker" "MISSING" "Install Docker: https://docs.docker.com/get-docker/"
+fi
+
+if command -v janet >/dev/null 2>&1; then
+  report "janet" "OK" ""
+else
+  report "janet" "MISSING" "Optional locally: you can also run everything via Docker (Mission 04). To install: https://janet-lang.org/docs/index.html"
+fi
+
+if [ -n "${BASH_VERSION:-}" ]; then
+  report "bash" "OK" ""
+else
+  report "bash" "MISSING" "This script expects bash; try running it with 'bash scripts/doctor.sh'."
+fi
+
+echo
+echo "This is a diagnostic, not an installer. Fix what's MISSING using"
+echo "whatever method you'd normally use on your own machine."

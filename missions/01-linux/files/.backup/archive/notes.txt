@@ -1,0 +1,2 @@
+backup notes: last full backup completed without incident.
+no penguins were logged during this backup run.

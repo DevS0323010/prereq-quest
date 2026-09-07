@@ -1,0 +1,21 @@
+# OS cruft
+.DS_Store
+Thumbs.db
+
+# Local agent/editor tooling config
+.claude/
+
+# Editors
+.vscode/
+.idea/
+*.swp
+
+# Local scratch space from scripts/check.sh
+/tmp/quest-*.log
+
+# Docker
+*.tar
+
+# Janet build artifacts, if you ever run jpm here
+/build/
+/jpm_tree/

@@ -1,0 +1,101 @@
+name: quest
+
+on:
+  push:
+  pull_request:
+
+env:
+  JANET_VERSION: v1.42.0
+
+jobs:
+  quest:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Install Janet
+        run: |
+          curl -fsSL -o /tmp/janet.tar.gz \
+            "https://github.com/janet-lang/janet/releases/download/${JANET_VERSION}/janet-${JANET_VERSION}-linux-x64.tar.gz"
+          sudo mkdir -p /opt
+          sudo tar xzf /tmp/janet.tar.gz -C /opt
+          sudo mv "/opt/janet-${JANET_VERSION}-linux" /opt/janet
+          echo "/opt/janet/bin" >> "$GITHUB_PATH"
+
+      - name: Make scripts executable
+        run: chmod +x scripts/check.sh scripts/doctor.sh
+
+      - name: Environment doctor
+        run: ./scripts/doctor.sh
+
+      - name: Run quest checks
+        id: checks
+        shell: bash
+        run: |
+          set +e
+          ./scripts/check.sh | tee check-output.txt
+          exit_code="${PIPESTATUS[0]}"
+          echo "exit_code=$exit_code" >> "$GITHUB_OUTPUT"
+          exit 0
+
+      - name: Build capability summary
+        if: always()
+        shell: bash
+        run: |
+          line_for() {
+            grep -E "^\[(ok|fail|skip)\][[:space:]]+$1" check-output.txt | head -n1
+          }
+          emoji_for() {
+            case "$1" in
+              "[ok]"*)   echo "✅ observed" ;;
+              "[fail]"*) echo "❌ incomplete" ;;
+              "[skip]"*) echo "⚪ unverified" ;;
+              *)         echo "⚪ unverified" ;;
+            esac
+          }
+
+          profile_line="$(line_for 'profile')"
+          linux_line="$(line_for 'linux mission')"
+          janet_line="$(line_for 'janet tests')"
+          docker_line="$(line_for 'docker')"
+          ssh_line="$(line_for 'ssh')"
+          conflict_line="$(line_for 'git conflict resolution')"
+          improve_line="$(line_for 'improve mission')"
+          commits="$(grep -F 'commits so far' check-output.txt | head -n1 | grep -o '[0-9]\+' | head -n1)"
+
+          git_status="$(emoji_for "$conflict_line")"
+          if [[ "$conflict_line" == "[ok]"* ]] && [ -n "$commits" ] && [ "$commits" -lt 3 ]; then
+            git_status="⚠️ partial (only $commits commit(s) — commit as you go)"
+          fi
+
+          {
+            echo "# 🧙 Prerequisite Quest"
+            echo
+            echo "| Capability | Status |"
+            echo "|---|---|"
+            echo "| Profile submitted | $(emoji_for "$profile_line") |"
+            echo "| Git / GitHub | $git_status |"
+            echo "| Linux CLI | $(emoji_for "$linux_line") |"
+            echo "| Shell | $(emoji_for "$linux_line") |"
+            echo "| Debugging | $(emoji_for "$janet_line") |"
+            echo "| Docker | $(emoji_for "$docker_line") |"
+            echo "| SSH | $(emoji_for "$ssh_line") |"
+            echo "| Improvement (open-ended) | $(emoji_for "$improve_line") |"
+            echo
+            echo "_SSH is self-reported / unverified unless your instructor has wired up_"
+            echo "_a real endpoint in \`missions/03-ssh/server.env\`. This is expected, not a bug._"
+            echo
+            echo "<details><summary>Raw check output</summary>"
+            echo
+            echo '```text'
+            cat check-output.txt
+            echo '```'
+            echo
+            echo "</details>"
+          } >> "$GITHUB_STEP_SUMMARY"
+
+      - name: Fail if required checks failed
+        run: exit "${{ steps.checks.outputs.exit_code }}"

@@ -1,0 +1,4 @@
+Quarterly report draft.
+
+A penguin was mentioned in a meeting, but THE_PENGUIN_WAS_HERE_YESTERDAY,
+which is not quite the string you are looking for.

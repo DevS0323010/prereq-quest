@@ -1,0 +1,84 @@
+2026-02-11 09:03:07 [INFO] db: scheduled job started
+2026-02-11 09:06:06 [DEBUG] cache: entering handler for /v1/status
+2026-02-11 09:07:01 [INFO] worker: scheduled job started
+2026-02-11 09:08:35 [INFO] cache: user session refreshed
+2026-02-11 09:11:17 [INFO] worker: user session refreshed
+2026-02-11 09:12:13 [INFO] api: health check passed
+2026-02-11 09:14:54 [INFO] cache: scheduled job finished
+2026-02-11 09:16:34 [INFO] auth: health check passed
+2026-02-11 09:19:39 [INFO] cache: scheduled job started
+2026-02-11 09:20:42 [INFO] db: health check passed
+2026-02-11 09:22:17 [WARN] db: retrying request, attempt 91
+2026-02-11 09:23:42 [INFO] api: connection pool size is 187
+2026-02-11 09:24:10 [WARN] auth: connection pool nearing capacity (177/50)
+2026-02-11 09:27:14 [DEBUG] db: entering handler for /v1/status
+2026-02-11 09:29:25 [INFO] api: scheduled job started
+2026-02-11 09:31:13 [ERROR] auth: timeout waiting for database response
+2026-02-11 09:32:16 [INFO] worker: scheduled job finished
+2026-02-11 09:34:57 [ERROR] auth: unhandled exception in request handler
+2026-02-11 09:37:31 [INFO] api: health check passed
+2026-02-11 09:38:50 [DEBUG] auth: payload size 99 bytes
+2026-02-11 09:40:38 [WARN] cache: connection pool nearing capacity (3/50)
+2026-02-11 09:43:46 [INFO] cache: scheduled job finished
+2026-02-11 09:45:07 [INFO] auth: connection pool size is 1
+2026-02-11 09:48:56 [DEBUG] db: payload size 46 bytes
+2026-02-11 09:51:58 [INFO] db: scheduled job started
+2026-02-11 09:52:34 [WARN] api: connection pool nearing capacity (5/50)
+2026-02-11 09:53:59 [INFO] db: scheduled job started
+2026-02-11 09:56:05 [INFO] auth: health check passed
+2026-02-11 09:57:08 [DEBUG] auth: payload size 68 bytes
+2026-02-11 10:00:55 [ERROR] auth: failed to write to disk: no space left on device
+2026-02-11 10:03:44 [INFO] db: user session refreshed
+2026-02-11 10:05:28 [WARN] auth: response time above threshold (333ms)
+2026-02-11 10:06:21 [INFO] cache: scheduled job started
+2026-02-11 10:07:04 [DEBUG] api: entering handler for /v1/status
+2026-02-11 10:09:04 [WARN] worker: connection pool nearing capacity (125/50)
+2026-02-11 10:10:34 [INFO] cache: config reloaded
+2026-02-11 10:12:12 [INFO] api: user session refreshed
+2026-02-11 10:14:29 [DEBUG] api: payload size 166 bytes
+2026-02-11 10:15:03 [INFO] db: health check passed
+2026-02-11 10:16:34 [WARN] worker: deprecated endpoint called
+2026-02-11 10:18:15 [INFO] auth: health check passed
+2026-02-11 10:21:53 [INFO] api: scheduled job started
+2026-02-11 10:23:30 [INFO] auth: request completed in 248ms
+2026-02-11 10:24:24 [INFO] auth: scheduled job finished
+2026-02-11 10:27:50 [WARN] auth: retrying request, attempt 76
+2026-02-11 10:28:03 [ERROR] cache: connection refused by upstream
+2026-02-11 10:29:03 [ERROR] auth: failed to authenticate service token
+2026-02-11 10:30:32 [INFO] worker: health check passed
+2026-02-11 10:33:55 [INFO] auth: health check passed
+2026-02-11 10:36:38 [INFO] cache: health check passed
+2026-02-11 10:39:36 [WARN] db: connection pool nearing capacity (172/50)
+2026-02-11 10:42:20 [INFO] db: user session refreshed
+2026-02-11 10:45:19 [WARN] db: response time above threshold (89ms)
+2026-02-11 10:48:36 [INFO] api: scheduled job started
+2026-02-11 10:49:59 [INFO] api: scheduled job started
+2026-02-11 10:50:28 [WARN] db: response time above threshold (763ms)
+2026-02-11 10:52:59 [DEBUG] api: entering handler for /v1/status
+2026-02-11 10:53:47 [WARN] worker: connection pool nearing capacity (155/50)
+2026-02-11 10:54:45 [INFO] worker: scheduled job finished
+2026-02-11 10:56:57 [INFO] api: user session refreshed
+2026-02-11 10:57:21 [INFO] db: connection pool size is 114
+2026-02-11 11:00:45 [INFO] cache: request completed in 194ms
+2026-02-11 11:03:57 [INFO] cache: request completed in 458ms
+2026-02-11 11:06:09 [INFO] worker: request completed in 395ms
+2026-02-11 11:07:57 [INFO] worker: scheduled job started
+2026-02-11 11:09:49 [WARN] auth: retrying request, attempt 42
+2026-02-11 11:10:56 [INFO] api: connection pool size is 86
+2026-02-11 11:12:51 [DEBUG] worker: cache miss for key user:180
+2026-02-11 11:13:24 [INFO] auth: scheduled job started
+2026-02-11 11:15:19 [INFO] worker: request completed in 755ms
+2026-02-11 11:17:21 [INFO] api: scheduled job finished
+2026-02-11 11:20:25 [DEBUG] cache: cache miss for key user:30
+2026-02-11 11:22:11 [ERROR] db: connection refused by upstream
+2026-02-11 11:24:22 [DEBUG] db: cache miss for key user:131
+2026-02-11 11:25:24 [ERROR] worker: unhandled exception in request handler
+2026-02-11 11:27:00 [WARN] cache: retrying request, attempt 111
+2026-02-11 11:28:42 [INFO] cache: cache warmed with 32 entries
+2026-02-11 11:31:57 [INFO] cache: scheduled job finished
+2026-02-11 11:33:25 [DEBUG] db: payload size 50 bytes
+2026-02-11 11:35:42 [INFO] worker: scheduled job finished
+2026-02-11 11:36:19 [INFO] worker: user session refreshed
+2026-02-11 11:39:41 [INFO] auth: config reloaded
+2026-02-11 11:40:32 [WARN] worker: response time above threshold (370ms)
+2026-02-11 11:43:40 [ERROR] db: connection refused by upstream
