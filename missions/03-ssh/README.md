@@ -13,9 +13,11 @@ If `QUEST_SSH_HOST` in `missions/03-ssh/server.env` is set, connect to it:
 ssh <QUEST_SSH_USER>@<QUEST_SSH_HOST>
 ```
 
-You'll need credentials or a key from your instructor — this repository
-does not manage that for you. Once connected, the server will print (or
-otherwise expose) a short token tied to your account.
+You'll need a private key from your instructor — this repository does
+not manage that for you. This term everyone connects with the same key
+and sees the same token; that's expected, not a bug. Once connected, the
+server prints a short token and disconnects (you may also see a `PTY
+allocation request failed` message — also expected, ignore it).
 
 Record in your profile, under `## Mission 03 — SSH`:
 
