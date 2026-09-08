@@ -9,14 +9,26 @@ instructor has set up a server. Check `missions/03-ssh/server.env`.
 If `QUEST_SSH_HOST` in `missions/03-ssh/server.env` is set, connect to it:
 
 ```console
-ssh <QUEST_SSH_USER>@<QUEST_SSH_HOST>
+ssh -i <path-to-the-key-file> <QUEST_SSH_USER>@<QUEST_SSH_HOST>
 ```
 
-You'll need a private key from your instructor — this repository does
-not manage that for you. This term everyone connects with the same key
-and sees the same token; that's expected, not a bug. Once connected, the
-server prints a short token and disconnects (you may also see a `PTY
-allocation request failed` message — also expected, ignore it).
+**Getting the key.** Your instructor distributes it out of band — this
+repository does not manage it, and the key is deliberately not committed
+here. If you don't have it, ask your instructor; not having it is not
+something you can fix from inside the repo, so don't burn time on it.
+
+Once you have the file, save it somewhere you'll remember and point
+`ssh` at it with `-i`, as above. On macOS and Linux, SSH refuses to use
+a key other people could read, so you may need:
+
+```console
+chmod 600 <path-to-the-key-file>
+```
+
+This term everyone connects with the same key and sees the same token;
+that's expected, not a bug. Once connected, the server prints a short
+token and disconnects (you may also see a `PTY allocation request
+failed` message — also expected, ignore it).
 
 Record in your profile, under `## Mission 03 — SSH`:
 
@@ -25,6 +37,21 @@ SSH token:
 
 Command I used:
 ```
+
+**Don't have the key yet?** That's a normal state, not a failure — the
+server can be configured before the keys reach everyone. Say so plainly
+instead of leaving it blank or guessing:
+
+```md
+SSH token: (don't have the key yet — asked my instructor on <date>)
+
+Command I used: (the command I would run, once I have it)
+
+Have you used SSH before? Briefly describe a time you did (or say you
+haven't):
+```
+
+CI does not check the token either way, so this costs you nothing.
 
 ## Fallback mode — no server configured
 

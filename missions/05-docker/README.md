@@ -26,8 +26,18 @@ Compare the paths used by `WORKDIR`, `COPY`, and `CMD`.
 
 </details>
 
-This mission runs the `app/main.janet` program fixed in Mission 04, so
-complete that mission first.
+The `Dockerfile` bug is independent of Mission 04's, so you can find and
+fix it on its own. But this container runs the same `app/main.janet`
+that Mission 04 asks you to debug, so the output won't be fully correct
+until that one is fixed too — don't be surprised by a `41` if Mission 04
+is still outstanding.
+
+**No Docker on your machine?** Installing it can be a real project of
+its own (Docker Desktop, WSL2, BIOS virtualization, admin rights). If
+that's where you are, fix the `Dockerfile` by reading it, push, and let
+GitHub Actions build and run it for you — the runner already has Docker.
+Say so in your profile. Reasoning your way to the fix is the skill being
+measured here; running it locally is convenience.
 
 ## Record your answer
 
