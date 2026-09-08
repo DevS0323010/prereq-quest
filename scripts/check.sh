@@ -241,7 +241,7 @@ if [ -f "$LOG_FILE" ]; then
   # and never shows you the conflict the mission is about.
   UPSTREAM_ENTRY=0
   grep -q "torch-bearer: left a spare torch by the door" "$LOG_FILE" && UPSTREAM_ENTRY=1
-  OWN_ENTRY="$(grep '^-[ \t]' "$LOG_FILE" \
+  OWN_ENTRY="$(grep '^[-*+][ \t]*[^ \t]' "$LOG_FILE" \
     | grep -v 'torch-bearer: left a spare torch by the door' \
     | grep -v 'add your entry here' \
     | head -n1)"

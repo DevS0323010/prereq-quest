@@ -50,8 +50,10 @@ which ships with Git for Windows, or from WSL. These are shell scripts;
 PowerShell and `cmd` can't run them.
 
 Nothing here needs to be installed system-wide except Git. Docker and
-Janet are each used by exactly one mission. If Janet is not installed
-locally, you can still exercise the same program through Mission 05.
+Janet are each used by exactly one mission, and you don't strictly need
+either: see [Installing Janet](README.md#installing-janet) in the root
+README for your options, one of which is letting GitHub Actions run
+things for you.
 
 ## Mission 00 — Who are you?
 

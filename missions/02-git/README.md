@@ -68,9 +68,13 @@ this mission. If you already do, that's a bonus signal, not a requirement.
 ## What CI checks
 
 - `missions/02-git/quest-log.md` contains no leftover conflict markers.
-- `missions/02-git/quest-log.md` still contains the entry from the
+- `missions/02-git/quest-log.md` contains the entry from the
   `challenge-conflict` branch.
+- `missions/02-git/quest-log.md` also contains **your own** entry. If you
+  merge before writing your line, Git merges cleanly, you never see the
+  conflict, and this check fails — which is the point of the mission.
 
-CI does **not** judge commit quality or verify your commit messages. Your
-instructor reviews the history manually; the automated check only verifies
-the resolved file.
+CI does **not** judge commit quality or verify your commit messages, and
+the automated check only looks at the resolved file. The job summary does
+show a nudge if you got here in very few commits; it doesn't fail the
+run. Your instructor reads the history itself.
