@@ -80,6 +80,19 @@ meaningful_length() {
   printf '%s' "$1" | tr -d '[:space:].-' | wc -c | tr -d ' '
 }
 
+# True when a section still holds the text TEMPLATE.md ships with. Compared
+# against the template rather than a hardcoded string, so editing the
+# template's placeholder wording can't silently start passing unfilled
+# answers.
+still_placeholder() {
+  local file="$1" heading="$2" template="answers/TEMPLATE.md"
+  [ -f "$template" ] || return 1
+  local theirs mine
+  theirs="$(extract_section "$file" "$heading" | tr -d '[:space:]')"
+  mine="$(extract_section "$template" "$heading" | tr -d '[:space:]')"
+  [ -n "$mine" ] && [ "$theirs" = "$mine" ]
+}
+
 # True when a label exists in the file but not in a form extract_field can
 # read (bolded, indented, bulleted). Distinguishes "you formatted it in a
 # way the checker can't parse" from "you left it blank" - very different
@@ -131,8 +144,10 @@ else
     hint="$(format_hint "$ANSWERS_FILE" "OS:")"
     [ -z "$hint" ] && hint="$(format_hint "$ANSWERS_FILE" "Shell:")"
     fail "profile: $ANSWERS_FILE is missing Environment details (OS / Shell)$hint"
-  elif [ "$BUILT_LEN" -lt 5 ] || [ "$UNDERSTAND_LEN" -lt 5 ]; then
-    fail "profile: $ANSWERS_FILE has unfilled free-response sections"
+  elif [ "$BUILT_LEN" -lt 5 ] || [ "$UNDERSTAND_LEN" -lt 5 ] \
+       || still_placeholder "$ANSWERS_FILE" "## Something I built" \
+       || still_placeholder "$ANSWERS_FILE" "## Something I want to understand better"; then
+    fail "profile: $ANSWERS_FILE still has the template's placeholder text in the free-response sections - replace it with your own answer"
   else
     ok "profile ($ANSWERS_FILE)"
   fi
