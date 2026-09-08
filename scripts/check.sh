@@ -26,26 +26,33 @@ info() { printf '[info] %s\n' "$1"; }
 # Extract the value following a "Label:" line in a markdown answers file.
 # Accepts the value on the same line ("Label: foo") or on the next
 # non-blank line, and stops at the next heading or "Label:" line.
+# Surrounding backticks and emphasis markers are stripped: wrapping a
+# path in `backticks` is a markdown habit, not a wrong answer.
 extract_field() {
   local file="$1" label="$2"
   awk -v label="$label" '
+    function clean(s) {
+      gsub(/^[ \t]+/, "", s)
+      gsub(/[ \t]+$/, "", s)
+      gsub(/^[`*_]+/, "", s)
+      gsub(/[`*_]+$/, "", s)
+      gsub(/^[ \t]+/, "", s)
+      gsub(/[ \t]+$/, "", s)
+      return s
+    }
     BEGIN { found = 0 }
     {
       line = $0
       gsub(/\r$/, "", line)
       if (found == 0) {
         if (index(line, label) == 1) {
-          rest = substr(line, length(label) + 1)
-          gsub(/^[ \t]+/, "", rest)
-          gsub(/[ \t]+$/, "", rest)
+          rest = clean(substr(line, length(label) + 1))
           if (rest != "") { print rest; exit }
           found = 1
           next
         }
       } else {
-        trimmed = line
-        gsub(/^[ \t]+/, "", trimmed)
-        gsub(/[ \t]+$/, "", trimmed)
+        trimmed = clean(line)
         if (trimmed == "") next
         if (trimmed ~ /^#/) exit
         if (trimmed ~ /:$/) exit
@@ -121,6 +128,9 @@ else
   STUDENT_COUNT="$(extract_field "$ANSWERS_FILE" "Count:")"
   STUDENT_COUNT_DIGITS="$(printf '%s' "$STUDENT_COUNT" | grep -o '[0-9]\+' | head -n1)"
 
+  # A leading "./" is the same path; accept it rather than failing on style.
+  STUDENT_PATH="${STUDENT_PATH#./}"
+
   path_ok=0
   if [ -n "$STUDENT_PATH" ] && [ -f "$STUDENT_PATH" ] && grep -qw "THE_PENGUIN_WAS_HERE" "$STUDENT_PATH"; then
     path_ok=1
@@ -135,7 +145,7 @@ else
     ok "linux mission"
   else
     detail=""
-    [ "$path_ok" -eq 0 ] && detail="$detail Task A path is wrong or missing."
+    [ "$path_ok" -eq 0 ] && detail="$detail Task A path is wrong or missing (give it relative to the repository root, e.g. missions/01-linux/files/..., not an absolute path)."
     [ "$count_ok" -eq 0 ] && detail="$detail Task B count is wrong or missing (expected a number)."
     fail "linux mission:$detail"
   fi
@@ -182,7 +192,7 @@ fi
 # --- Mission 02: Git conflict resolution -----------------------------------
 LOG_FILE="missions/02-git/quest-log.md"
 if [ -f "$LOG_FILE" ]; then
-  if grep -q '^<<<<<<<\|^=======$\|^>>>>>>>' "$LOG_FILE"; then
+  if grep -q '^<<<<<<<\|^=======\r\{0,1\}$\|^>>>>>>>' "$LOG_FILE"; then
     fail "git conflict resolution: leftover conflict markers in $LOG_FILE"
   elif grep -q "torch-bearer: left a spare torch by the door" "$LOG_FILE" \
        && ! grep -q "add your entry here" "$LOG_FILE"; then
@@ -212,9 +222,15 @@ else
 fi
 
 # --- Informational: commit count -------------------------------------------
+# Counts commits you authored, by excluding the scaffold's authors. Forks
+# don't reliably carry tags, and the scaffold commits (plus the one the
+# challenge-conflict merge brings in) would otherwise inflate the count.
+SCAFFOLD_AUTHORS="iceice666@outlook.com syankuan@gmail.com"
 if git rev-parse --is-inside-work-tree >/dev/null 2>&1; then
-  COMMITS="$(git log --oneline 2>/dev/null | wc -l | tr -d ' ')"
-  info "commits so far: $COMMITS (aim for several small commits, not one giant one)"
+  COMMITS="$(git log --format='%ae' 2>/dev/null \
+    | grep -v -x -F "$(printf '%s\n' $SCAFFOLD_AUTHORS)" \
+    | wc -l | tr -d ' ')"
+  info "your commits: $COMMITS (aim for several small commits, not one giant one)"
 fi
 
 echo
