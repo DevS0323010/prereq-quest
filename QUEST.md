@@ -50,8 +50,8 @@ which ships with Git for Windows, or from WSL. These are shell scripts;
 PowerShell and `cmd` can't run them.
 
 Nothing here needs to be installed system-wide except Git. Docker and
-Janet are each used by exactly one mission, and Mission 04 works from
-Docker alone if you don't want to install Janet locally.
+Janet are each used by exactly one mission. If Janet is not installed
+locally, you can still exercise the same program through Mission 05.
 
 ## Mission 00 — Who are you?
 
@@ -67,9 +67,9 @@ sections. You'll fill in the rest of this file as you complete missions.
 |---|---|---|
 | 01 | [Linux scavenger hunt](missions/01-linux/README.md) | filesystem, shell, pipes |
 | 02 | [Git](missions/02-git/README.md) | commits, forks, merge conflicts |
-| 03 | [SSH](missions/03-ssh/README.md) | remote access |
-| 04 | [Docker](missions/04-docker/README.md) | containers, build/run |
-| 05 | [Debug](missions/05-debug/README.md) | reading unfamiliar code |
+| 03 | [SSH](missions/03-ssh/README.md) | SSH authentication / remote connection |
+| 04 | [Debug](missions/04-debug/README.md) | reading unfamiliar code |
+| 05 | [Docker](missions/05-docker/README.md) | containers, build/run |
 | 06 | [Improve something](missions/06-improve/README.md) | judgment, initiative |
 
 ## Checking your progress

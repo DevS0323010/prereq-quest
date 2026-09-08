@@ -1,5 +1,8 @@
 # <github-username>
 
+<!-- Public fork: use only your GitHub username. Do not add a student ID,
+Discord name, legal name, email address, or other private identifier. -->
+
 ## Environment
 
 OS:
@@ -19,14 +22,16 @@ Languages I have used:
 - [ ] Compile software from source
 - [ ] Use a debugger
 - [ ] Use Linux as a primary development environment
+- [ ] `sudo rm -rf /` a server ???!
+- [ ] <others ...>
 
 ## Something I built
 
-...
+<did u made a windows clone lol>
 
 ## Something I want to understand better
 
-...
+<maybe how to pwn school server ???>
 
 ## Mission 01 — Linux
 
@@ -48,13 +53,13 @@ SSH token:
 
 Command I used:
 
-## Mission 04 — Docker
+## Mission 04 — Debug
 
 What was wrong:
 
 What I changed:
 
-## Mission 05 — Debug
+## Mission 05 — Docker
 
 What was wrong:
 

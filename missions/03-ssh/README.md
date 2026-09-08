@@ -1,9 +1,8 @@
 # Mission 03 — SSH
 
-This mission checks whether you can get a shell on another machine and do
-something useful once you're there. It runs in one of two modes,
-depending on whether your instructor has set up a server. Check
-`missions/03-ssh/server.env`.
+This mission checks whether you can authenticate with SSH and connect to
+a remote endpoint. It runs in one of two modes, depending on whether your
+instructor has set up a server. Check `missions/03-ssh/server.env`.
 
 ## Preferred mode — a real server is configured
 

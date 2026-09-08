@@ -1,4 +1,4 @@
-# Mission 05 — Debug an unfamiliar project
+# Mission 04 — Debug an unfamiliar project
 
 This is the important one.
 
@@ -42,15 +42,16 @@ or use the local checker:
 ./scripts/check.sh
 ```
 
-Don't have Janet installed? See the root `README.md` for install
-options. If installing it isn't practical for you, push your fix and let
-GitHub Actions run the tests — it installs Janet itself. (Mission 04's
-container runs this same file, but only if you have Docker, so that's
-not a way around a missing Janet unless you already had Docker anyway.)
+Don't have Janet installed? Run `./scripts/doctor.sh` for install
+guidance, or see the root `README.md` for options. If installing it
+isn't practical for you, push your fix and let GitHub Actions run the
+tests — it installs Janet itself. (Mission 05's container runs this same
+file, but only if you have Docker, so that isn't a way around a missing
+Janet unless you already had Docker anyway.)
 
 ## Record your answer
 
-In your profile, under `## Mission 05 — Debug`:
+In your profile, under `## Mission 04 — Debug`:
 
 ```md
 What was wrong:

@@ -15,7 +15,7 @@ Do not reduce its output to a single pass/fail score. Look at:
 
 Self-report and observation disagreeing is itself useful information —
 a student who says they've never used Docker but sails through Mission
-04 learns fast; one who claims confidence but can't get the container
+05 learns fast; one who claims confidence but can't get the container
 running may be overestimating themselves, or may just be having an off
 day. Either way, that's a conversation, not a grade.
 
@@ -26,7 +26,7 @@ day. Either way, that's a conversation, not a grade.
 | Git | commits, forks, remotes, merge conflicts |
 | Linux | filesystem navigation, hidden files, paths |
 | Shell | pipes, redirection, composing commands |
-| SSH | connecting to a remote machine |
+| SSH | authentication and connecting to a remote endpoint |
 | Docker | reading a Dockerfile, build/run, basic image debugging |
 | Debugging | forming a hypothesis from an error and testing it |
 | Code reading | understanding unfamiliar code well enough to fix it |
@@ -96,7 +96,7 @@ for.
 
 4. **Do not commit a solved version of any mission** to the branch
    students fork from. Verify the starter state is genuinely broken
-   (Mission 04's Dockerfile, Mission 05's arithmetic bug) by running
+   (Mission 04's arithmetic bug, Mission 05's Dockerfile) by running
    `./scripts/check.sh` yourself on a clean checkout before publishing.
 
 5. Students should not need to touch `.github/workflows/quest.yml`. If
@@ -123,7 +123,7 @@ explanations.
 
 | What a green check can't rule out | How to look |
 |---|---|
-| Test edited instead of code fixed (Mission 05) | `git diff <upstream>/main -- app/test.janet` — any diff here is the tell |
+| Test edited instead of code fixed (Mission 04) | `git diff <upstream>/main -- app/test.janet` — any diff here is the tell |
 | Quest log typed by hand, never merged (Mission 02) | `git log --merges --oneline` is empty, or `git merge-base --is-ancestor upstream/challenge-conflict HEAD` fails. Note a student who used rebase or cherry-pick legitimately may also show no merge commit |
 | "Improved something" with no actual change (Mission 06) | `git diff <upstream>/main...HEAD --stat` shows nothing outside `answers/` |
 | Padded prose that clears a length floor | Read it. The checks only ever verified that text exists, never that it says anything |
@@ -140,6 +140,11 @@ the commit-count line ignores empty commits.
 - A green Actions run means every automatable check passed. It does not
   mean the student understands everything — read `answers/<username>.md`
   and the commit history for that.
+- The `your commits` line counts only non-empty commits whose author
+  isn't in `SCAFFOLD_AUTHORS` (see setup step 6), so it does separate a
+  student's work from the starter history without needing a cohort base
+  SHA. It's still worth reading `git log` yourself for the *shape* of
+  the work — the count can't tell a thoughtful commit from a trivial one.
 - A red run with a clear commit history and a thoughtful `answers/`
   writeup explaining what's still broken is a *better* signal than a
   green run with one squashed commit and empty answer fields.

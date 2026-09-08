@@ -21,52 +21,56 @@ shape of the work, not a single "finish quest" commit at the end.
 ## Task B — resolve a conflict
 
 The upstream repository (the one you forked from, not your fork) has a
-branch called `challenge-conflict`. It contains a small, harmless edit
-that will conflict with something you were asked to edit in this mission.
+branch called `challenge-conflict`. Merge
+`upstream/challenge-conflict` into your current branch and resolve the
+conflict in `missions/02-git/quest-log.md`.
 
-1. Add the upstream repository as a remote, if you haven't already:
+Before merging, replace the placeholder entry in that file with your own
+entry and commit it. After resolving the conflict, the file must contain
+both your entry and the entry from `challenge-conflict`, with no conflict
+markers left.
 
-   ```console
-   git remote add upstream <url-of-the-repo-you-forked-from>
-   git fetch upstream
-   ```
+<details><summary>Hint: exact Git commands</summary>
 
-2. Open `missions/02-git/quest-log.md` and replace the placeholder entry
-   line with your own, then commit it:
+Add and fetch the upstream repository if you have not already:
 
-   ```console
-   git add missions/02-git/quest-log.md
-   git commit -m "add my entry to the quest log"
-   ```
+```console
+git remote add upstream <url-of-the-repo-you-forked-from>
+git fetch upstream
+```
 
-3. Merge the upstream branch into your current branch:
+Commit your own quest-log entry before starting the merge:
 
-   ```console
-   git merge upstream/challenge-conflict
-   ```
+```console
+git add missions/02-git/quest-log.md
+git commit -m "add my entry to the quest log"
+```
 
-   Git will report a conflict in `missions/02-git/quest-log.md`, because
-   both sides edited the same line.
+Merge the challenge branch:
 
-4. Open the file, resolve the conflict by hand, remove the conflict
-   markers (`<<<<<<<`, `=======`, `>>>>>>>`), and make sure **both**
-   entries — yours and the one from `challenge-conflict` — end up in the
-   file. Then finish the merge:
+```console
+git merge upstream/challenge-conflict
+```
 
-   ```console
-   git add missions/02-git/quest-log.md
-   git commit
-   ```
+Open the conflicted file, preserve both entries, and remove
+`<<<<<<<`, `=======`, and `>>>>>>>`. Then finish the merge:
+
+```console
+git add missions/02-git/quest-log.md
+git commit
+```
+
+</details>
 
 You are not expected to know `rebase`, `cherry-pick`, or the reflog for
 this mission. If you already do, that's a bonus signal, not a requirement.
 
 ## What CI checks
 
-- Your repository has more than one commit.
 - `missions/02-git/quest-log.md` contains no leftover conflict markers.
 - `missions/02-git/quest-log.md` still contains the entry from the
   `challenge-conflict` branch.
 
-CI does **not** try to verify your commit messages word-for-word, and it
-does not check *how* you resolved the conflict — only the result.
+CI does **not** judge commit quality or verify your commit messages. Your
+instructor reviews the history manually; the automated check only verifies
+the resolved file.
