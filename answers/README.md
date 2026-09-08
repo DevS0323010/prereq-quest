@@ -15,10 +15,13 @@ do not include a student ID, Discord name, legal name, email address, or
 other private identifier. Your instructor should collect any roster
 mapping separately through a private channel.
 
-This file is where every mission's written answers live: your profile,
-plus one section per mission. Each mission's `README.md` tells you what
-goes in its section. CI reads this file, so keep the section headings
-(the `##` lines) intact — you can edit everything else freely.
+This file is where your written answers live: your profile, plus a
+section for each mission that asks for one. Not every mission does —
+Mission 02 is judged from your repository itself, so the template has no
+section for it, and that's not a mistake. Each mission's `README.md`
+tells you what (if anything) goes here. CI reads this file, so keep the
+section headings (the `##` lines) intact — you can edit everything else
+freely.
 
 This file is self-reported where it says so (mostly the profile and the
 SSH section). It is not used to penalize you for inexperience. It exists

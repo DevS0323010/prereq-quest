@@ -38,6 +38,21 @@ SSH token:
 Command I used:
 ```
 
+**Don't have the key yet?** That's a normal state, not a failure — the
+server can be configured before the keys reach everyone. Say so plainly
+instead of leaving it blank or guessing:
+
+```md
+SSH token: (don't have the key yet — asked my instructor on <date>)
+
+Command I used: (the command I would run, once I have it)
+
+Have you used SSH before? Briefly describe a time you did (or say you
+haven't):
+```
+
+CI does not check the token either way, so this costs you nothing.
+
 ## Fallback mode — no server configured
 
 If `QUEST_SSH_HOST` is empty, there is no server to connect to yet. This

@@ -150,3 +150,9 @@ the commit-count line ignores empty commits.
   green run with one squashed commit and empty answer fields.
 - Mission 06 has no canonical answer. CI only checks that an explanation
   exists. The content is entirely for you to read.
+- Mission 04 has two correct fixes: change `base-value` from 40 to 41, or
+  change `the-answer`'s `+ 1` to `+ 2`. Both make the tests pass, so
+  students will hand you contradictory descriptions of "what was wrong"
+  and both are right. Read the reasoning, not the diff — a student who
+  explains why they picked one has done the mission; one whose
+  explanation doesn't match their own diff hasn't.
