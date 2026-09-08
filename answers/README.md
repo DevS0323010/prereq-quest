@@ -20,6 +20,20 @@ SSH section). It is not used to penalize you for inexperience. It exists
 so your instructor can compare what you *say* you've done against what
 CI *observed* you doing.
 
+## How CI reads this file
+
+It's a simple parser, not a Markdown engine. Three rules keep it happy:
+
+- Leave the `##` headings and the `Label:` lines as they are — plain,
+  starting at the beginning of the line. Don't bold them (`**Path:**`),
+  indent them, or turn them into list items (`- Path:`).
+- Put your answer after the colon, or on the next non-blank line.
+- Don't wrap answers in code fences (```` ``` ````).
+
+Backticks around a value are tolerated, so ``Path: `missions/…` `` is
+fine. Everything that isn't a heading or a label is yours to edit
+freely.
+
 ---
 
 ```md

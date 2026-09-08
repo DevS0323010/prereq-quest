@@ -67,12 +67,22 @@ for.
    - torch-bearer: left a spare torch by the door
    ```
 
-   Commit and push that branch. This repository already ships that
-   branch locally if you cloned/received it with full history — verify
-   with `git branch -a` and push it explicitly if it's missing on the
-   remote (`git push origin challenge-conflict`). `scripts/check.sh`
-   and the CI workflow both check for the resulting text and will tell
-   you immediately if the branch content ever drifts from this.
+   Commit and push that branch (`git push origin challenge-conflict`),
+   then verify it actually landed on the remote students fork from:
+
+   ```console
+   git ls-remote origin challenge-conflict
+   ```
+
+   If that prints nothing, Mission 02 Task B is impossible for every
+   student and no one can get a green run — there is nothing for them
+   to merge. `scripts/check.sh` and the CI workflow both check for the
+   resulting text and will tell you immediately if the branch content
+   ever drifts from this.
+
+   Note that forking copies `main` only by default, so students won't
+   have this branch on their fork. That's intended: Mission 02 has them
+   add `upstream` as a remote and fetch it, which is the point.
 
 3. **Decide whether to wire up Mission 03 (SSH) for real.** If you have
    a course server that can print a per-user token to anyone who

@@ -15,12 +15,27 @@ you self-report.
 3. Work through the missions below, roughly in order.
 4. Commit as you go (see Mission 02 — this matters).
 5. Push to your fork.
-6. Open the **Actions** tab on your fork and read the results.
+6. Open the **Actions** tab on your fork and read the results. The first
+   time, GitHub asks you to enable workflows on your fork — until you
+   click enable, pushes will appear to do nothing. Enabling doesn't
+   re-run anything by itself: push again, or use the manual
+   **Run workflow** button on the `quest` workflow.
 7. Keep pushing fixes until the checks are green.
 
 If you get stuck on *how* to fork, clone, commit, or push — that's fine.
 Figuring that out is itself part of what this diagnostic measures. Use
 whatever you'd normally use to figure it out.
+
+## If you get stuck
+
+Give it about 30 focused minutes with your usual resources first —
+error messages, search, docs, an LLM, a classmate. If you're still
+stuck after that, **message your instructor directly** and describe
+what you were trying to do, what you ran, and what happened instead.
+
+Getting stuck is data, not a penalty. Where a cohort gets stuck is
+exactly what this diagnostic is for, and a clear description of a wall
+you hit is worth more than silently giving up on a mission.
 
 ## Before you start
 
@@ -29,6 +44,10 @@ Run the doctor script to see what's available on your machine:
 ```console
 ./scripts/doctor.sh
 ```
+
+On **Windows**, run this (and everything else here) from **Git Bash**,
+which ships with Git for Windows, or from WSL. These are shell scripts;
+PowerShell and `cmd` can't run them.
 
 Nothing here needs to be installed system-wide except Git. Docker and
 Janet are each used by exactly one mission, and Mission 04 works from
@@ -70,5 +89,6 @@ you have them installed), but it's the fastest feedback loop you have.
 - If a check is red, the fix is almost always: read the error message
   first.
 - The Actions job summary shows a capability profile, not a score. A
-  `⚪ unverified` result (mainly SSH, if your instructor hasn't set up a
-  server yet) is not a failure.
+  `⚪ unverified` result is not a failure. SSH is *always* reported this
+  way: this repository doesn't automate checking a live SSH session, so
+  whether or not a server is configured, that mission is self-reported.
