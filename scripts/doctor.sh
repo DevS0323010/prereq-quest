@@ -26,7 +26,7 @@ fi
 if command -v ssh >/dev/null 2>&1; then
   report "ssh" "OK" ""
 else
-  report "ssh" "MISSING" "An OpenSSH client ships with macOS and most Linux distros."
+  report "ssh" "MISSING" "An OpenSSH client ships with macOS, most Linux distros, Git Bash, and Windows 10+ (Settings > Optional features > OpenSSH Client)."
 fi
 
 if command -v docker >/dev/null 2>&1; then

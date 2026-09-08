@@ -1,0 +1,7 @@
+# Git for Windows defaults to converting LF to CRLF on checkout. Bash
+# refuses to run a CRLF script ("$'\r': command not found"), so pin the
+# files that are executed, not just read, to LF everywhere.
+* text=auto
+*.sh text eol=lf
+Dockerfile text eol=lf
+*.janet text eol=lf
