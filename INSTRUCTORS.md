@@ -104,6 +104,14 @@ for.
    thing the workflow checks, since students will be using it as their
    fast local feedback loop.
 
+6. **If you commit to the scaffold, add your email to
+   `SCAFFOLD_AUTHORS`** near the bottom of `scripts/check.sh`. That list
+   is how the "your commits" line tells the student's work apart from
+   the starter history. Miss it and every student's count is inflated by
+   your commits, which quietly disables the "commit as you go" warning
+   in the job summary. Check it with a fresh clone: `./scripts/check.sh`
+   should report `your commits: 0`.
+
 ## What the checks can't see
 
 `scripts/check.sh` ships in the repo it grades, so a student can read it
