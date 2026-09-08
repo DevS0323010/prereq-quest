@@ -165,6 +165,8 @@ else
   STUDENT_COUNT_DIGITS="$(printf '%s' "$STUDENT_COUNT" | grep -o '[0-9]\+' | head -n1)"
 
   # A leading "./" is the same path; accept it rather than failing on style.
+  # So is a path typed with Windows backslashes.
+  STUDENT_PATH="${STUDENT_PATH//\\//}"
   STUDENT_PATH="${STUDENT_PATH#./}"
 
   # The answer has to be a file that was already here: without the prefix

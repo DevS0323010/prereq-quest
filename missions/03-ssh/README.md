@@ -25,6 +25,16 @@ a key other people could read, so you may need:
 chmod 600 <path-to-the-key-file>
 ```
 
+On **Windows**, `chmod` doesn't change anything real. If `ssh` complains
+that the key file is unprotected or its permissions are too open, move
+the key into your `~/.ssh` folder (from Git Bash) and try again. If you
+use the built-in Windows OpenSSH from a different shell, restrict the
+file to your own user instead:
+
+```console
+icacls <path-to-the-key-file> /inheritance:r /grant:r "%USERNAME%:R"
+```
+
 This term everyone connects with the same key and sees the same token;
 that's expected, not a bug. Once connected, the server prints a short
 token and disconnects (you may also see a `PTY allocation request

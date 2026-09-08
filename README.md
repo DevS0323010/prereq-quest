@@ -27,8 +27,10 @@ have three options, and any of them is fine:
 - **Install it locally** — see the
   [Janet install docs](https://janet-lang.org/docs/index.html).
   Package managers carry it too (`brew install janet`,
-  `apt install janet`, `pacman -S janet`); versions vary, which doesn't
-  matter for this quest.
+  `apt install janet`, `pacman -S janet`, `scoop install janet`,
+  `choco install janet`), and the
+  [releases page](https://github.com/janet-lang/janet/releases) has a
+  Windows installer; versions vary, which doesn't matter for this quest.
 - **Use Docker instead** — Mission 05 builds an image with Janet in it
   and runs the same `app/main.janet`.
 - **Lean on CI** — push and read the Actions output. Slowest feedback
