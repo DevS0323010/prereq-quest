@@ -104,6 +104,29 @@ for.
    thing the workflow checks, since students will be using it as their
    fast local feedback loop.
 
+## What the checks can't see
+
+`scripts/check.sh` ships in the repo it grades, so a student can read it
+and satisfy its letter. That's an accepted trade-off for a low-stakes
+diagnostic — but if a green run looks surprising next to a student's
+`answers/` writeup, these are the cheap things to look at. Each is a
+conversation starter, not an accusation; several have innocent
+explanations.
+
+| What a green check can't rule out | How to look |
+|---|---|
+| Test edited instead of code fixed (Mission 05) | `git diff <upstream>/main -- app/test.janet` — any diff here is the tell |
+| Quest log typed by hand, never merged (Mission 02) | `git log --merges --oneline` is empty, or `git merge-base --is-ancestor upstream/challenge-conflict HEAD` fails. Note a student who used rebase or cherry-pick legitimately may also show no merge commit |
+| "Improved something" with no actual change (Mission 06) | `git diff <upstream>/main...HEAD --stat` shows nothing outside `answers/` |
+| Padded prose that clears a length floor | Read it. The checks only ever verified that text exists, never that it says anything |
+| Fabricated SSH token (Mission 03) | Compare against your server's logs. Nothing in this repo can verify it — by design |
+| Which human actually did the work | `git log --format='%an <%ae>' ` on their fork; the answers filename is not tied to an identity |
+
+Two things the checker *does* now enforce, so you don't need to check by
+hand: the Mission 01 path has to be a file under
+`missions/01-linux/files/` (not one the student created elsewhere), and
+the commit-count line ignores empty commits.
+
 ## Reading results
 
 - A green Actions run means every automatable check passed. It does not
