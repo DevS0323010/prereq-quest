@@ -3,6 +3,9 @@ name: quest
 on:
   push:
   pull_request:
+  # Lets you start a run by hand from the Actions tab. Useful if you
+  # enabled Actions on your fork after you'd already pushed.
+  workflow_dispatch:
 
 env:
   JANET_VERSION: v1.42.0
@@ -64,7 +67,7 @@ jobs:
           ssh_line="$(line_for 'ssh')"
           conflict_line="$(line_for 'git conflict resolution')"
           improve_line="$(line_for 'improve mission')"
-          commits="$(grep -F 'commits so far' check-output.txt | head -n1 | grep -o '[0-9]\+' | head -n1)"
+          commits="$(grep -F 'your commits' check-output.txt | head -n1 | grep -o '[0-9]\+' | head -n1)"
 
           git_status="$(emoji_for "$conflict_line")"
           if [[ "$conflict_line" == "[ok]"* ]] && [ -n "$commits" ] && [ "$commits" -lt 3 ]; then
@@ -85,8 +88,9 @@ jobs:
             echo "| SSH | $(emoji_for "$ssh_line") |"
             echo "| Improvement (open-ended) | $(emoji_for "$improve_line") |"
             echo
-            echo "_SSH is self-reported / unverified unless your instructor has wired up_"
-            echo "_a real endpoint in \`missions/03-ssh/server.env\`. This is expected, not a bug._"
+            echo "_SSH is always self-reported: this repository does not automate_"
+            echo "_verifying a live SSH session, whether or not a server is configured_"
+            echo "_in \`missions/03-ssh/server.env\`. This is expected, not a bug._"
             echo
             echo "<details><summary>Raw check output</summary>"
             echo
