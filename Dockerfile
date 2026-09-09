@@ -32,4 +32,4 @@ WORKDIR /quest
 
 COPY app/main.janet /app/main.janet
 
-CMD ["janet", "main.janet"]
+CMD ["janet", "/app/main.janet"]
