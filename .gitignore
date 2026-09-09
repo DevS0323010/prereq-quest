@@ -16,3 +16,5 @@ Thumbs.db
 # Janet build artifacts, if you ever run jpm here
 /build/
 /jpm_tree/
+answers/libt3widgetlog.txt
+answers/log.txt
